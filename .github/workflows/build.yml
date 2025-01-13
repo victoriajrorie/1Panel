@@ -33,14 +33,14 @@ jobs:
       - name: Check Release
         id: check-release
         run: |
-          gh release view ${{ env.version }} -R wojiushixiaobai/1Panel >/dev/null 2>&1 || echo "create=1" >> $GITHUB_OUTPUT
+          gh release view ${{ env.version }} -R victoriajrorie/1Panel >/dev/null 2>&1 || echo "create=1" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check Build
         id: check-build
         run: |
-          gh release view ${{ env.version }} -R wojiushixiaobai/1Panel | grep web-${{ env.version }}.tar.gz >/dev/null 2>&1 || echo "build=1" >> $GITHUB_OUTPUT
+          gh release view ${{ env.version }} -R victoriajrorie/1Panel | grep web-${{ env.version }}.tar.gz >/dev/null 2>&1 || echo "build=1" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -59,7 +59,7 @@ jobs:
       - name: Create Release
         if: steps.check-release.outputs.create == 1
         run: |
-          gh release create ${{ env.version }} --notes "Release ${{ env.version }}" -R wojiushixiaobai/1Panel
+          gh release create ${{ env.version }} --notes "Release ${{ env.version }}" -R victoriajrorie/1Panel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -78,7 +78,7 @@ jobs:
       - name: Check Build
         id: check-build
         run: |
-          gh release view ${{ env.version }} -R wojiushixiaobai/1Panel | grep 1panel-${{ env.version }}-linux-amd64.tar.gz >/dev/null 2>&1 || echo "build=1" >> $GITHUB_OUTPUT
+          gh release view ${{ env.version }} -R victoriajrorie/1Panel | grep 1panel-${{ env.version }}-linux-amd64.tar.gz >/dev/null 2>&1 || echo "build=1" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
